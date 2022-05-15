@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>xin-yin-css-practise</title>
+</head>
+
+<body>
+    <div style="min-width: 50px;height: 100px;background-color: aqua;">
+        max-width不管瀏覽器寬度多大,元素最大就只顯示到50px,若瀏覽器寬大小於50則自動平均瀏覽器寬度
+        <br> min-width瀏覽器的寬度小於50的時候元素寬度依然是50px,若瀏覽器寬度大於50則自動平均瀏覽器寬度
+    </div>
+
+    <div>
+        <div style="width: 100px;height: 100px;background-color: blueviolet;margin: 50px;">
+            margin為外間距意指元素與元素間的間距</div>
+        <div style="width: 100px;height: 100px;background-color: blueviolet;padding: 50px;">
+            padding為內間距意指元素內容與元素本身的間距</div>
+    </div>
+
+    <div class="box">
+        元素最終寬度 = 自身寬度+填充(間距或邊框) 因此元素200px加上內間距20px最終寬度為240px
+        因此填充物會將元素總寬度撐大,若並不想要元素寬度增大但想增加間距就可以使用box-sizing: border-box
+        作用即是總體寬度 = 固定為border(自身寬度) ,填充物寬度則為自己設定的寬度
+    </div>
+
+    <div class="position">
+        static為預設值 = 按照瀏覽器塊狀元素或行內元素規則定位
+        <div class="box1">123
+
+        </div>
+        <div class="box1 relative">relative為將設定的座標相對套上,且不會影響其他元素排版
+            所以即便設定完座標後與其他元素重疊,依然不會跑版,等於直接讓元素浮起來
+        </div>
+        <div class="box1 fixed">fixed為將元素固定在設定的座標且x.y軸只需各取一個起始點
+            <div class="box1 absolute">absolute為絕對定位,讓內容浮起來後已父元素作為起始基準點
+                定位在設定的座標,x.y軸只需各取一個起始點,當使用absolute浮起來後元素dom即消失
+                故下層元素會往上推,與fixed很相似差異在於absolute基準點為父元素,假設沒有父元素
+                則會以body為基準點
+            </div>
+        </div>
+    
+        <div class="float">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTva9Ck4KYN7QvTW74UYv782W3AFAWzM0_sLQ&usqp=CAU" alt="">
+            <div>float為將指定的元素固定在父元素中的左右邊,因此若block元素的寬度小於父元素時
+                block元素空的寬度可以供其他元素使用,float有點像是讓元素浮貼固定在指定位置
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        height: auto;
+    }
+
+    .box {
+        width: 200px;
+        height: auto;
+        font-size: 20px;
+        background-color: #CCC;
+        padding: 20px;
+        box-sizing: border-box;
+    }
+
+    .box1 {
+        width: 200px;
+        height: auto;
+        background-color: yellow;
+        border: 1px black solid;
+    }
+
+    .relative {
+        position: relative;
+        left: 20px;
+        bottom: 10px;
+    }
+
+    .fixed {
+        position: fixed;
+        right: 0;
+        top:0;
+    }
+
+    .absolute {
+        position: absolute;
+        top: 15px;
+        right: 10px;
+    }
+    .float{
+        width: 500px;
+        height: auto;
+        background-color: aquamarine;
+        border: 1px black solid;
+    }
+    img{
+        float: right;
+    }
+</style>
